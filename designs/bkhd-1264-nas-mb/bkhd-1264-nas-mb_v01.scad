@@ -28,6 +28,19 @@ translate([-io_shield_overlap, -io_shield_overlap, 0]) union() {
         }
     }
 
+    // Text
+    translate([io_shield_overlap, io_shield_overlap, io_shield_thickness]) {
+        linear_extrude(0.4) {
+            translate([ 5, 35, 0]) text("BKHD 1264 NAS MB", size=5, font="Comic Neue");
+            translate([80, 35, 0]) text("v00.2", size=4, font="Comic Neue");
+            translate([ 5, 28, 0]) text("https://github.com/rvbg/mainboard-io-shields/", size=4, font="Comic Neue");
+
+            // LED:
+            translate([64, 17, 0]) text("PWR", size=4, font="Comic Neue");
+            translate([64, 22, 0]) text("HDD", size=4, font="Comic Neue");
+        }
+    }
+
     // Backplate
     difference() {
         roundedcube(
@@ -43,29 +56,26 @@ translate([-io_shield_overlap, -io_shield_overlap, 0]) union() {
             // IMPORTANT: All distances are relative to the left bottom corner of the I/O aperture! This makes it easy
             // to measure and position the cutouts. Remember when using cylinders, openscad uses position as the center!
 
-            translate([5, 35, 1.6]) linear_extrude(0.5) text("BKHD 1264 NAS MB", size=5);
-            translate([5, 30, 1.6]) linear_extrude(0.5) text("https://github.com/rvbg/mainboard-io-shields/tree/main/designs/bkhd-1264-nas-mb    v00.1", size=2.5);
-
             // USB+USB
-            translate([   7,    3, 0]) cube([13, 6.5, 3]);
-            translate([   7, 11.5, 0]) cube([13, 6.5, 3]);
+            translate([ 8.5,  4.5, 0]) cube([13, 6.5, 3]);
+            translate([ 8.5, 13.0, 0]) cube([13, 6.5, 3]);
 
             // HDMI+DP
-            translate([  26,    3, 0]) cube([17, 5.5, 3]);
-            translate([  26,   14, 0]) cube([17, 5.5, 3]);
+            translate([  27,    4, 0]) cube([15, 5.5, 3]);
+            translate([  26,   16, 0]) cube([17, 5.5, 3]);
 
             // USB+USB
-            translate([  49,    3, 0]) cube([13, 6.5, 3]);
-            translate([  49, 11.5, 0]) cube([13, 6.5, 3]);
+            translate([  51,  4.5, 0]) cube([13, 6.5, 3]);
+            translate([  51, 13.0, 0]) cube([13, 6.5, 3]);
 
             // LEDs
-            translate([ 66,   3, 0]) cube([6, 10, 3]);
+            translate([ 67,   4, 0]) cube([5, 10, 3]);
 
             // 4x RJ-45
-            translate([ 76, 3.5, 0]) cube([60, 12, 3]);
+            translate([ 75, 4.5, 0]) cube([62, 12, 3]);
 
             // Audio jack 3.5mm
-            translate([148,   7, 0]) cylinder(3, 5, 3, $fn=25);
+            translate([146,   7, 0]) cylinder(3, 5, 3, $fn=25);
         }
     }
 }
